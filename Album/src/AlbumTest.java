@@ -85,9 +85,9 @@ public class AlbumTest {
         // agora vamos adicionar pacotinhos aleatórios até o álbum ficar quase cheio
 
         int minimoFigurinhasColadasParaAutoCompletar =
-                ((int) (TAMANHO_DO_ALBUM * Album.PERCENTUAL_MINIMO_PARA_AUTO_COMPLETAR / 100f)) + 1;
+                ((int) (TAMANHO_DO_ALBUM * Album.PERCENTUAL_MINIMO_PARA_AUTO_COMPLETAR / 100f));
 
-        while (album.getQuantFigurinhasColadas() < minimoFigurinhasColadasParaAutoCompletar) {
+        while (album.getQuantFigurinhasColadas() <= minimoFigurinhasColadasParaAutoCompletar) {
             Pacotinho novoPacotinho = new Pacotinho(this.album);  // aleatório
             album.receberNovoPacotinho(novoPacotinho);
         }

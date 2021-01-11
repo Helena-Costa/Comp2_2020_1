@@ -25,7 +25,6 @@ public class Figurinha {
      */
     public int getPosicao() {
        return this.posicao;
-       //return 0;  // ToDo IMPLEMENT ME!!!!
     }
 
     @Override
@@ -37,3 +36,4 @@ public class Figurinha {
         return this.getPosicao() == outraFigurinha.getPosicao();
     }
 }
+

@@ -34,7 +34,7 @@ public class Album {
 
     public void autoCompletar() {
         // verifica se o álbum já está suficientemente cheio
-        // caso não esteja, isto é, se o número de figurinhas coladas não representa mais de 90% do tamanho do álbum,
+        // caso não esteja, isto é, se o número de figurinhas coladas não representa mais de 90% do total de figurinhas,
         // então o álbum não pode se auto completar.
 
         if (this.getQuantFigurinhasFaltantes() == 0) {
@@ -46,27 +46,16 @@ public class Album {
             return;
         }
 
-        int[] arrayFigurinhasFaltantes = new int[this.getQuantFigurinhasFaltantes()];
-        int posicao = 0;
-        for (int i = 1; i <= this.tamanhoDoAlbum; i++) {
-            if (this.album[i] == null){
-                arrayFigurinhasFaltantes[posicao++] = i;
+        for (int i = 1; i <= tamanhoDoAlbum; i++){
+            if (album[i] == null){
+                Figurinha figurinha = new Figurinha(i);
+                colarFigurinha(figurinha);
             }
         }
+    }
 
-        posicao = 0;
-        int[] arrayFigurinhasFaltantesSobMedida;
-        do {
-            arrayFigurinhasFaltantesSobMedida = new int[quantFigurinhasPorPacotinho];
-            for (int i = 0; i < quantFigurinhasPorPacotinho; i++) {
-                arrayFigurinhasFaltantesSobMedida[i] = arrayFigurinhasFaltantes[posicao++];
-                if (posicao == arrayFigurinhasFaltantes.length) {
-                    break;
-                }
-            }
-            Pacotinho pacotinho = new Pacotinho(this, arrayFigurinhasFaltantesSobMedida);
-            this.receberNovoPacotinho(pacotinho);
-        } while (posicao < arrayFigurinhasFaltantes.length);
+    public void colarFigurinha(Figurinha figurinha){
+        this.album[figurinha.getPosicao()] = figurinha;
     }
 
     public int getQuantFigurinhasColadas() {
@@ -103,13 +92,7 @@ public class Album {
     }
 
     public int getQuantFigurinhasFaltantes() {
-        int quantFigurinhasFaltantes = 0;
-        for (int i = 1; i < album.length; i++) {
-            if (album[i] == null) {
-                quantFigurinhasFaltantes++;
-            }
-        }
-        return quantFigurinhasFaltantes;
+        return this.tamanhoDoAlbum - this.getQuantFigurinhasColadas();
     }
 
     public int getTamanhoDoAlbum() {
