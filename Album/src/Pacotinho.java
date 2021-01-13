@@ -22,7 +22,7 @@ public class Pacotinho extends ArrayList<Figurinha> {
 
         for (int i = 0; i < posicoes.length; i++) {
             Figurinha figurinha = new Figurinha(posicoes[i]);
-            add(figurinha);
+            this.add(figurinha);
         }
     }
 

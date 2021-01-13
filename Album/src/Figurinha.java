@@ -30,10 +30,9 @@ public class Figurinha {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || this.getClass() != o.getClass()) return false;
         Figurinha outraFigurinha = (Figurinha) o;
 
         return this.getPosicao() == outraFigurinha.getPosicao();
     }
 }
-
